@@ -1,0 +1,66 @@
+syntax="proto3";
+
+package position_service;
+option go_package="genproto/position_service";
+
+    
+import "google/protobuf/empty.proto";
+
+service AttributeService {
+    rpc Create(CreateAttributeRequest) returns (Attribute) {}
+    rpc GetAll(GetAllAttributeRequest) returns (GetAllAttributeResponse) {}
+    rpc GetById(GetByIdAttributeRequest) returns (GetByIdAttributeResponse) {}
+    rpc Update(UpdateAttributeRequest) returns (UpdateAttributeResponse) {}
+    rpc Delete(DeleteAttributeRequest) returns (DeleteAttributeResponse) {}
+}
+
+message CreateAttributeRequest {
+    string name = 1;
+    string type = 2;
+}
+
+message Attribute {
+    string id = 1;
+    string name = 2;
+    string type = 3;
+}
+
+message GetAllAttributeRequest {
+    int32 limit = 1;
+    int32 offset = 2;
+    string search = 3;
+}
+
+message GetAllAttributeResponse {
+    repeated Attribute Attributes = 1;
+    int32 count = 2;
+}
+
+message GetByIdAttributeRequest {
+    string id = 1;
+}
+
+message GetByIdAttributeResponse {
+    string id = 1;
+    string name = 2;
+    string type = 3;
+}
+
+message UpdateAttributeRequest {
+    string id = 1;
+    string name = 2;
+    string type = 3;
+}
+
+message UpdateAttributeResponse {
+    string id = 1;
+    string name = 2;
+    string type = 3;
+}
+message DeleteAttributeRequest {
+    string id = 1;
+}
+
+message DeleteAttributeResponse {
+    string id = 1;
+}

@@ -1,0 +1,66 @@
+syntax="proto3";
+
+package company_service;
+option go_package="genproto/company_service";
+
+    
+import "google/protobuf/empty.proto";
+
+service CompanyService {
+    rpc Create(CreateCompanyRequest) returns (Company) {}
+    rpc GetAll(GetAllCompanyRequest) returns (GetAllCompanyResponse) {}
+    rpc GetById(GetByIdCompanyRequest) returns (GetByIdCompanyResponse) {}
+    rpc Update(UpdateCompanyRequest) returns (UpdateCompanyResponse) {}
+    rpc Delete(DeleteCompanyRequest) returns (DeleteCompanyResponse) {}
+}
+
+message CreateCompanyRequest {
+    string name = 1;
+    
+}
+
+message Company {
+    string id = 1;
+    string name = 2;
+    
+}
+
+message GetAllCompanyRequest {
+    int32 limit = 1;
+    int32 offset = 2;
+    string search = 3;
+}
+
+message GetAllCompanyResponse {
+    repeated Company Companys = 1;
+    int32 count = 2;
+}
+
+message GetByIdCompanyRequest {
+    string id = 1;
+}
+
+message GetByIdCompanyResponse {
+    string id = 1;
+    string name = 2;
+    
+}
+
+message UpdateCompanyRequest {
+    string id = 1;
+    string name = 2;
+    
+}
+
+message UpdateCompanyResponse {
+    string id = 1;
+    string name = 2;
+    
+}
+message DeleteCompanyRequest {
+    string id = 1;
+}
+
+message DeleteCompanyResponse {
+    string id = 1;
+}
